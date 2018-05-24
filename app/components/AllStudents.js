@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import SingleStudent from './SingleStudent';
+import SingleStudentItem from './SingleStudentItem';
 
 export default class AllStudents extends Component {
   constructor() {
@@ -19,7 +19,7 @@ export default class AllStudents extends Component {
     return (
       <div>
         {this.state.students.map(student => (
-          <SingleStudent key={student.id} student={student} />
+          <SingleStudentItem key={student.id} student={student} />
         ))}
       </div>
     );

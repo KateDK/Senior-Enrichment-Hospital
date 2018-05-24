@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SingleCampus = props => {
+const SingleCampusItem = props => {
   const campus = props.campus;
   return (
     <div>
@@ -11,4 +11,4 @@ const SingleCampus = props => {
   );
 };
 
-export default SingleCampus;
+export default SingleCampusItem;
