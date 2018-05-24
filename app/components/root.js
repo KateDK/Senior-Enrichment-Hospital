@@ -29,14 +29,15 @@ export default class Root extends Component {
     // );
     return (
       <div>
-        <NavBar />
-
         <BrowserRouter>
-          <Switch>
-            <Route path="/campuses" component={AllCampuses} />
-            <Route path="/students" component={AllStudents} />
-            <Route path="/students/:id" component={Student} />
-          </Switch>
+          <div>
+            <NavBar />
+            <Switch>
+              <Route exact path="/campuses" component={AllCampuses} />
+              <Route exact path="/students" component={AllStudents} />
+              <Route path="/students/:id" component={Student} />
+            </Switch>
+          </div>
         </BrowserRouter>
       </div>
     );

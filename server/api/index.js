@@ -17,8 +17,10 @@ router.get('/students', async (req, res, next) => {
 
 router.get('/students/:id', async (req, res, next) => {
   try {
-    const SingleStudentItem = await Student.findById(req.params.id);
-    res.json(Student);
+    const student = await Student.findById(req.params.id, {
+      include: [{ all: true }],
+    });
+    res.json(student);
   } catch (err) {
     next(err);
   }
@@ -37,9 +39,11 @@ router.get('/campuses', async (req, res, next) => {
 
 router.get('/campuses/:id', async (req, res, next) => {
   try {
-    const SingleCampusItem = await Campus.findById(req.params.id);
+    const campus = await Campus.findById(req.params.id, {
+      include: [{ all: true }],
+    });
 
-    res.json(Campus);
+    res.json(campus);
   } catch (err) {
     next(err);
   }

@@ -1,17 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
+//import ReactDOM from 'react-dom';
 
-const Student = props => {
-  const studentView = props.studentView;
-  return (
-    <div>
-      <img src={studentView.imageUrl} />
-      <h2>{`${studentView.firstName} ${studentView.lastName}`}</h2>
-      <p>{studentView.gpa}</p>
-      <div>
-        <h3>{studentView.campus.namne}</h3>
-      </div>
-    </div>
-  );
-};
+class Student extends Component {
+  constructor() {
+    super();
+    this.state = {
+      student: {},
+    };
+  }
+  //const studentView = props.studentView;
+  async componentDidMount() {
+    const res = await axios.get(`/api/students/${this.props.match.params.id}`);
+    this.setState({ student: res.data });
+  }
+  render() {
+    console.log('@@@@@@@@@', this.state.student);
+    if (!this.state.student.firstName) {
+      return <div>Fetching Data...</div>;
+    } else {
+      return (
+        <div>
+          <img src={this.state.student.imageUrl} />
+          <h2>
+            {`${this.state.student.firstName} ${this.state.student.lastName}`}
+          </h2>
+          <p>{this.state.student.gpa}</p>
+          <span>
+            <h3>{this.state.student.campus.name}</h3>
+          </span>
+        </div>
+      );
+    }
+  }
+}
 
 export default Student;
