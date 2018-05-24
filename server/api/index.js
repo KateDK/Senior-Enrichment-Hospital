@@ -3,7 +3,7 @@
 const router = require('express').Router();
 
 const { Student, Campus } = require('../db');
-
+//Students:
 router.get('/students', async (req, res, next) => {
   try {
     const students = await Student.findAll({ include: [{ all: true }] });
@@ -13,12 +13,34 @@ router.get('/students', async (req, res, next) => {
     next(err);
   }
 });
+
+router.get('/students/:id', async (req, res, next) => {
+  try {
+    console.log('*****STUDENT: ', Student);
+    const singleStudent = await Student.findById(req.params.id);
+
+    res.json(singleStudent);
+  } catch (err) {
+    next(err);
+  }
+});
+//Campuses:
 router.get('/campuses', async (req, res, next) => {
   try {
     // todo: Do we really need include all?
     const campuses = await Campus.findAll({ include: [{ all: true }] });
 
     res.json(campuses);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get('/campuses/:id', async (req, res, next) => {
+  try {
+    const singleCampus = await Campus.findById(req.params.id);
+
+    res.json(singleCampus);
   } catch (err) {
     next(err);
   }
