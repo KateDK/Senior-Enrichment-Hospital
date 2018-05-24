@@ -3,6 +3,7 @@
 const router = require('express').Router();
 
 const { Student, Campus } = require('../db');
+
 //Students:
 router.get('/students', async (req, res, next) => {
   try {
@@ -16,20 +17,18 @@ router.get('/students', async (req, res, next) => {
 
 router.get('/students/:id', async (req, res, next) => {
   try {
-    console.log('*****STUDENT: ', Student);
     const singleStudent = await Student.findById(req.params.id);
-
     res.json(singleStudent);
   } catch (err) {
     next(err);
   }
 });
+
 //Campuses:
 router.get('/campuses', async (req, res, next) => {
   try {
     // todo: Do we really need include all?
     const campuses = await Campus.findAll({ include: [{ all: true }] });
-
     res.json(campuses);
   } catch (err) {
     next(err);
@@ -45,6 +44,7 @@ router.get('/campuses/:id', async (req, res, next) => {
     next(err);
   }
 });
+
 // Your routes go here!
 // NOTE: Any routes that you put here are ALREADY mounted on `/api`
 // You can put all routes in this file HOWEVER,
