@@ -1,8 +1,28 @@
 'use strict';
 
 const router = require('express').Router();
-const { Student } = require('../db/models/students');
 
+const { Student, Campus } = require('../db');
+
+router.get('/students', async (req, res, next) => {
+  try {
+    const students = await Student.findAll({ include: [{ all: true }] });
+
+    res.json(students);
+  } catch (err) {
+    next(err);
+  }
+});
+router.get('/campuses', async (req, res, next) => {
+  try {
+    // todo: Do we really need include all?
+    const campuses = await Campus.findAll({ include: [{ all: true }] });
+
+    res.json(campuses);
+  } catch (err) {
+    next(err);
+  }
+});
 // Your routes go here!
 // NOTE: Any routes that you put here are ALREADY mounted on `/api`
 // You can put all routes in this file HOWEVER,
