@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
 //import ReactDOM from 'react-dom';
 
 class Student extends Component {
@@ -15,7 +16,6 @@ class Student extends Component {
     this.setState({ student: res.data });
   }
   render() {
-    console.log('@@@@@@@@@', this.state.student);
     if (!this.state.student.firstName) {
       return <div>Fetching Data...</div>;
     } else {
