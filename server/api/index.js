@@ -39,6 +39,16 @@ router.put('/students/:id', (req, res, next) => {
     .catch(next);
 });
 
+router.delete('/students/:id', (req, res, next) => {
+  Student.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then(() => res.status(204).end())
+    .catch(next);
+});
+
 //Campuses:
 router.get('/campuses', async (req, res, next) => {
   try {
@@ -72,6 +82,16 @@ router.put('/campuses/:id', (req, res, next) => {
   Campus.findById(req.params.id)
     .then(campus => campus.update(req.body))
     .then(campus => res.json(campus))
+    .catch(next);
+});
+
+router.delete('/campuses/:id', (req, res, next) => {
+  Campus.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then(() => res.status(204).end())
     .catch(next);
 });
 // Your routes go here!
