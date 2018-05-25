@@ -32,6 +32,8 @@ router.post('/students', (req, res, next) => {
     .catch(next);
 });
 
+routner.put();
+
 //Campuses:
 router.get('/campuses', async (req, res, next) => {
   try {
