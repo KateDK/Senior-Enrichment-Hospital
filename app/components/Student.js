@@ -16,7 +16,9 @@ class Student extends Component {
     this.setState({ student: res.data });
   }
   render() {
-    if (!this.state.student.firstName) {
+    if (!this.state.student) {
+      return <h1>No Such Student!</h1>;
+    } else if (!this.state.student.firstName) {
       return <div>Fetching Data...</div>;
     } else {
       return (

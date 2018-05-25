@@ -4,6 +4,7 @@ import AllStudents from './AllStudents';
 import AllCampuses from './AllCampuses';
 import Student from './Student';
 import NavBar from './NavBar';
+import Campus from './Campus';
 
 import {
   Route,
@@ -34,6 +35,7 @@ export default class Root extends Component {
             <NavBar />
             <Switch>
               <Route exact path="/campuses" component={AllCampuses} />
+              <Route path="/campuses/:id" component={Campus} />
               <Route exact path="/students" component={AllStudents} />
               <Route path="/students/:id" component={Student} />
             </Switch>

@@ -1,11 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SingleCampusItem = props => {
   const campus = props.campus;
   return (
     <div>
-      <img src={campus.imageUrl} />
-      <h2>{campus.name}</h2>
+      <Link to={`/campuses/${campus.id}`}>
+        <img src={campus.imageUrl} />
+        <h2>{campus.name}</h2>
+      </Link>
       {/*todo add clickable number of students*/}
     </div>
   );
