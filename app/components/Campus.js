@@ -8,10 +8,15 @@ class Campus extends Component {
     this.state = {
       campus: {},
     };
+    this.removeCampus = this.removeCampus.bind(this);
   }
   async componentDidMount() {
     const res = await axios.get(`/api/campuses/${this.props.match.params.id}`);
     this.setState({ campus: res.data });
+  }
+  async removeCampus(id) {
+    await axios.delete(`/api/campuses/${id}`);
+    this.setState({ campus: null });
   }
   render() {
     if (!this.state.campus) {
@@ -25,9 +30,11 @@ class Campus extends Component {
           <h2>{this.state.campus.name}</h2>
           <p>{this.state.campus.description}</p>
           <p>{this.state.campus.address}</p>
+          <button onClick={() => this.removeCampus(this.state.campus.id)}>
+            Delete Campus
+          </button>
           <span>
             <h3>STUDENTS:</h3>
-            {/*todo: set student list for this campus*/}
             {this.state.campus.students.map(student => (
               <SingleStudent key={student.id} student={student} />
             ))}

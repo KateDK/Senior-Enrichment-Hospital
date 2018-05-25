@@ -8,6 +8,7 @@ export default class AllStudents extends Component {
     this.state = {
       students: [],
     };
+    this.removeStudent = this.removeStudent.bind(this);
   }
 
   async componentDidMount() {
@@ -15,11 +16,22 @@ export default class AllStudents extends Component {
     this.setState({ students: res.data });
   }
 
+  async removeStudent(id) {
+    await axios.delete(`api/students/${id}`);
+    this.setState({
+      students: this.state.students.filter(student => student.id !== id),
+    });
+  }
+
   render() {
     return (
       <div>
         {this.state.students.map(student => (
-          <SingleStudentItem key={student.id} student={student} />
+          <SingleStudentItem
+            key={student.id}
+            student={student}
+            removeStudent={this.removeStudent}
+          />
         ))}
       </div>
     );

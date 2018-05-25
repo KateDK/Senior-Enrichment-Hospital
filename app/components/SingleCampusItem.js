@@ -3,14 +3,15 @@ import { Link } from 'react-router-dom';
 
 const SingleCampusItem = props => {
   const campus = props.campus;
+  const removeCampus = props.removeCampus;
   return (
     <div>
       <Link to={`/campuses/${campus.id}`}>
         <img src={campus.imageUrl} />
         <h2>{campus.name}</h2>
       </Link>
-      {/*todo add clickable number of students*/}
       <p>{campus.students.length} students</p>
+      <button onClick={() => removeCampus(campus.id)}>Delete Campus</button>
     </div>
   );
 };
