@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import SingleStudent from './SingleStudentItem';
 
 class Campus extends Component {
   constructor() {
@@ -27,6 +28,9 @@ class Campus extends Component {
           <span>
             <h3>STUDENTS:</h3>
             {/*todo: set student list for this campus*/}
+            {this.state.campus.students.map(student => (
+              <SingleStudent key={student.id} student={student} />
+            ))}
           </span>
         </div>
       );

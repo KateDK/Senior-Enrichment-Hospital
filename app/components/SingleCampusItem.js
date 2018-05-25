@@ -10,6 +10,7 @@ const SingleCampusItem = props => {
         <h2>{campus.name}</h2>
       </Link>
       {/*todo add clickable number of students*/}
+      <p>{campus.students.length} students</p>
     </div>
   );
 };
