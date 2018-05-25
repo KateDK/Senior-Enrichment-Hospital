@@ -26,6 +26,12 @@ router.get('/students/:id', async (req, res, next) => {
   }
 });
 
+router.post('/students', (req, res, next) => {
+  Student.create(req.body)
+    .then(student => res.json(student))
+    .catch(next);
+});
+
 //Campuses:
 router.get('/campuses', async (req, res, next) => {
   try {
@@ -48,7 +54,11 @@ router.get('/campuses/:id', async (req, res, next) => {
     next(err);
   }
 });
-
+router.post('/campuses', (req, res, next) => {
+  Campus.create(req.body)
+    .then(campus => res.json(campus))
+    .catch(next);
+});
 // Your routes go here!
 // NOTE: Any routes that you put here are ALREADY mounted on `/api`
 // You can put all routes in this file HOWEVER,

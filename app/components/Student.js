@@ -21,6 +21,9 @@ class Student extends Component {
     } else if (!this.state.student.firstName) {
       return <div>Fetching Data...</div>;
     } else {
+      const campusName = this.state.student.campus
+        ? this.state.student.campus.name
+        : 'No Campus';
       return (
         <div>
           <img src={this.state.student.imageUrl} />
@@ -29,7 +32,7 @@ class Student extends Component {
           </h2>
           <p>{this.state.student.gpa}</p>
           <span>
-            <h3>{this.state.student.campus.name}</h3>
+            <h3>{campusName}</h3>
           </span>
         </div>
       );
