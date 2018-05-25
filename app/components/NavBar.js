@@ -13,8 +13,16 @@ import AllCampuses from './AllCampuses';
 const NavBar = props => {
   return (
     <div className="nav-bar">
-      <Link to="/students">STUDENTS</Link>
-      <Link to="/campuses">CAMPUSES</Link>
+      <div>
+        <button>
+          <Link to="/students">STUDENTS</Link>
+        </button>
+      </div>
+      <div>
+        <button>
+          <Link to="/campuses">CAMPUSES</Link>
+        </button>
+      </div>
     </div>
   );
 };

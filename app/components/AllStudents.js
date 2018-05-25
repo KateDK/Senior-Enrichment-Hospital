@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import SingleStudentItem from './SingleStudentItem';
+import AddStudent from './AddStudent';
+import { Link } from 'react-router-dom';
 
 export default class AllStudents extends Component {
   constructor() {
@@ -33,6 +35,9 @@ export default class AllStudents extends Component {
             removeStudent={this.removeStudent}
           />
         ))}
+        <button>
+          <Link to="/students/addStudent">Add Student</Link>
+        </button>
       </div>
     );
   }
