@@ -32,7 +32,12 @@ router.post('/students', (req, res, next) => {
     .catch(next);
 });
 
-routner.put();
+router.put('/students/:id', (req, res, next) => {
+  Student.findById(req.params.id)
+    .then(student => student.update(req.body))
+    .then(student => res.json(student))
+    .catch(next);
+});
 
 //Campuses:
 router.get('/campuses', async (req, res, next) => {
@@ -56,8 +61,16 @@ router.get('/campuses/:id', async (req, res, next) => {
     next(err);
   }
 });
+
 router.post('/campuses', (req, res, next) => {
   Campus.create(req.body)
+    .then(campus => res.json(campus))
+    .catch(next);
+});
+
+router.put('/campuses/:id', (req, res, next) => {
+  Campus.findById(req.params.id)
+    .then(campus => campus.update(req.body))
     .then(campus => res.json(campus))
     .catch(next);
 });
