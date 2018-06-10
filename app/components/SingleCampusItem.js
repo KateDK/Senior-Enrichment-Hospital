@@ -11,6 +11,9 @@ const SingleCampusItem = props => {
         <h2>{campus.name}</h2>
       </Link>
       <p>{campus.students.length} students</p>
+      <Link to={`/campuses/${campus.id}/edit`}>
+        <button>Edit Campus</button>
+      </Link>
       <button onClick={() => removeCampus(campus.id)}>Delete Campus</button>
     </div>
   );

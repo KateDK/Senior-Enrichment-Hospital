@@ -7,6 +7,7 @@ import NavBar from './NavBar';
 import Campus from './Campus';
 import AddStudent from './AddStudent';
 import AddCampus from './AddCampus';
+import EditCampus from './EditCampus';
 
 import {
   Route,
@@ -24,12 +25,6 @@ export default class Root extends Component {
   componentDidMount() {}
 
   render() {
-    // return (
-    //   <div>
-    //     <AllStudents />
-    //     <AllCampuses />
-    //   </div>
-    // );
     return (
       <div>
         <BrowserRouter>
@@ -39,7 +34,8 @@ export default class Root extends Component {
               <Switch>
                 <Route exact path="/campuses" component={AllCampuses} />
                 <Route exact path="/campuses/addCampus" component={AddCampus} />
-                <Route path="/campuses/:id" component={Campus} />
+                <Route exact path="/campuses/:id" component={Campus} />
+                <Route exact path="/campuses/:id/edit" component={EditCampus} />
                 <Route exact path="/students" component={AllStudents} />
                 <Route
                   exact

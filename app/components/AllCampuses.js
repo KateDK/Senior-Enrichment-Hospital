@@ -25,6 +25,9 @@ export default class AllCampuses extends Component {
   }
 
   render() {
+    if (this.state.campuses.length === 0) {
+      return <h1>There are currently no campuses listed</h1>;
+    }
     return (
       <div>
         {this.state.campuses.map(campus => (

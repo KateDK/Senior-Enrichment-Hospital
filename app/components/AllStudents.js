@@ -19,13 +19,16 @@ export default class AllStudents extends Component {
   }
 
   async removeStudent(id) {
-    await axios.delete(`api/students/${id}`);
+    await axios.delete(`/api/students/${id}`);
     this.setState({
       students: this.state.students.filter(student => student.id !== id),
     });
   }
 
   render() {
+    if (this.state.students.length === 0) {
+      return <h1>There are currently no students listed</h1>;
+    }
     return (
       <div>
         {this.state.students.map(student => (
